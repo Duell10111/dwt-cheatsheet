@@ -10,3 +10,8 @@ jobs:
         uses: dante-ev/latex-action@master
         with:
           root_file: dwt.tex
+      - name: Upload Latex PDF File
+        uses: actions/upload-artifact@v1
+        with:
+          name: DWT.pdf
+          path: dwt.pdf
