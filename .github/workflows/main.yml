@@ -13,4 +13,5 @@ jobs:
       - name: Upload Latex PDF File
         uses: actions/upload-artifact@v2
         with:
+          name: DWT
           path: dwt.pdf
