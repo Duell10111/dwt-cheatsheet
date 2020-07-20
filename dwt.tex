@@ -413,5 +413,168 @@
 	$\sigma = \sqrt{\Var[\X]}$
 \end{sectionbox}
 
+% SECTION ====================================================================================
+\section{Erzeugende und charakter. Funktionen}
+% ============================================================================================
+
+\begin{sectionbox}
+	\subsection{Wahrscheinlichkeitserzeugende Funktion}
+	für $\X : \Omega \ra \mathbb N_0$
+
+	\boxed{G_{\X} (z) = \E[z^{\X}] = \sum \limits_{k=0}^\infty p_{\X} (k) z^k, \quad \abs{z} \le 1}
+
+	\paragraph{Anwendungen}
+	\begin{eqnarray*}
+		p_{\X}(n) =\P(\eset{\X = n}) = \frac{1}{n!} [\frac{\diff^n}{\diff z^n} G_{\X} (z)]_{z = 0}, \quad \forall n \in \mathbb N_0 \\
+		\E [\X] = [\frac{\diff}{\diff z} G_{\X} (z)]_{z = 1} \\
+		\E [\X^2]-\E[\X] = [\frac{\diff^2}{\diff z^2} G_{\X} (z)]_{z = 1} \\
+		\Var [\X] =[\frac{\diff^2}{\diff z^2} G_{\X} (z)]_{z = 1} - \E [\X]^2 + \E [\X]
+	\end{eqnarray*}
+	Für $\X_i : \Omega \ra \mathbb N_0, i \in \eset{1, \ldots, n}$ stochastisch unabhängige, diskrete, nichtnegative ZV und $\Z = \sum_{i=1}^{n} \X_i$
+	\[G_{\Z} (z) = \prod_{i = 1}^{n} G_{\X_i} (z)\]
+
+\end{sectionbox}
+
+% Im WS2015/16 nicht Klausurrelevant
+%\begin{sectionbox}
+%	\subsection{Momenterzeugende Funktion} % (fold)
+%	\label{sub:momenterzeugende_funktion}
+%
+%	Mit $\X: \Omega \ra \mathbb R$ eine reelle ZV: \\
+%
+%	\boxed{
+%		M_{\X} (s) = \E [e^{s \X}], \quad s \in \mathbb D = \eset{s \in \mathbb R }{\E [e^{s \X} < \infty]}
+%	}\\
+%
+%
+%	Potenzreihenentwicklung (mit $s \in ]-a, a[$):\\
+%	$M_{\X} (s) = \E [ e^{s \X}] = \E \left[\sum \limits_{k=0}^{\infty} \frac{s^k}{k!} \X^k\right] = \sum \limits_{k=0}^{\infty} \frac{s^k}{k!} \E\left[\X^k\right]$
+%
+%	Erwartungswert:
+%	$\E[\X^n] = \left[\frac{\diff^n}{\diff s^n} M_{\X} (s)\right]_{s=0}, \quad \forall n \in \mathbb N_0$
+%
+%	Summe von ZV:
+%	$M_{\Z} (s) = \prod \limits_{i = 1}^{n} M_{\X_i} (s)$
+%\end{sectionbox}
+
+% subsection momenterzeugende_funktion (end)
+\begin{sectionbox}
+	\subsection{Charakteristische Funktion} % (fold)
+	\label{sub:charakteristische_funktion}
+	\boxed{\varphi_{\X} (\omega) = \ew{e^{\i \omega \X}} , \quad \omega \in \mathbb R} $\qquad \varphi_{\X} = \int\limits_{-\infty}^\infty e^{\i\omega x} f_{\X}(x) \diff x$\\
+	$f_{\X}(-x) \T \varphi(\omega)$ \\
+
+	\emph{Erwartungswert:}
+	\begin{eqnarray*}
+		\E[\X^n] = \frac{1}{\i^n} \left[\frac{\diff^n}{\diff \omega^n} \varphi_{\X}(\omega)\right]_{\omega = 0}
+	\end{eqnarray*}
+	\emph{Summe von ZV:} $Z=\sum_{i=1}^{n}X_i$
+	\begin{eqnarray*}
+		\varphi_{\Z} (\omega) = \prod_{i=1}^{n} \varphi_{\X_i} (\omega)
+	\end{eqnarray*}
+\end{sectionbox}
+
+% subsection charakteristische_funktion (end)
+\begin{sectionbox}
+	\subsection{Der zentrale Grenzwertsatz}
+	\emph{Definition}: Seien $\X_i, i \in {1,...,n}$, stochastisch unabhängige und identisch
+	verteilte reelle Zufallsvariablen und gelte $E[\X_i] = \mu < \infty$ und $Var[\X_i] = \sigma^2 < \infty$.
+	Dann konvergiert die Verteilung der standardisierten Summe\\
+	\centerline{$\Z_n= \sum\limits_{i=1}^{n}\frac{(\X-\mu)}{\sigma\sqrt{n}}$} \\
+	d.h $E[\Z_n] = 0$ und $Var[\Z_n] = 1$, für $n \ra \infty$ gegen die Standartnormalverteilung. \\
+	Es gilt also: \\
+	\centerline{$\lim_{n \ra \infty} \P({\Z_n \le z}) = \Phi (z)$}
+\end{sectionbox}
+% subsection der_zentrale_grenzwertsatz (end)
+
+
+\vfill
+%\columnbreak
+
+% SECTION ====================================================================================
+\section{Reelle Zufallsfolgen}
+% ============================================================================================
+
+\begin{sectionbox}
+	\subsection{Markow-Ungleichung}
+	\boxed{\P(\eset{\abs{\X} \ge a}) \le \frac{\E[|\X|]}{a} }
+\end{sectionbox}
+
+\begin{sectionbox}
+	\subsection{Tschebyschow-Ungleichung}
+	\boxed{\P(\eset{\abs{\X- \E[\X]} \ge a}) \le \frac{\Var[\X]}{a^2} }
+
+
+\end{sectionbox}
+\begin{sectionbox}
+	\subsection{Das schwache Gesetz der großen Zahlen}
+	Sei $(\X_i : i \in \N)$ eine Folge reeller, paarweise unkorrelierter Zufallsvariablen mit beschränkter Varianz:\\
+	$\frac{1}{n} \sum\limits_{i = 1}^n (\X_i - \E[\X_i]) \ra 0$\\ \\
+	Für stochastisch unabhängige und identisch verteilte Folgenelemente mit $E[\X_i] = E[X]$ und $Var[\X_i] = Var[X] < \infty$ gilt: \\
+	$\frac{1}{n} \sum\limits_{i = 1}^n (\X_i) \ra \E[\X_i] $
+\end{sectionbox}
+
+% SECTION ====================================================================================
+\section{Markowketten}
+\begin{sectionbox}
+	\subsection{Markowketten}
+	\subsubsection{Allgemein}
+	Eine Zufallsfolge ($\mathsf{\X}_{n}: n \in \mathbb{N}$) heißt Markowkette, falls $\forall \ n_{i} \in \N, \\
+	i \in {1, \dots k}$ mit $n_{1} < \dots < n_{k}$ gilt:\\
+	$\mathsf{(\X_{n_{1}},\X_{n_{2}}, \dots \X_{n_{k-2}}) \ra \X_{n_{k-1}} \ra \X_{n_{k}}}$ \\
+	$\Ra$ Die Verteilung eines Folgeelements hängt nur vom direkten Vorgänger ab
+	\begin{tablebox}{@{\extracolsep\fill}l@{}}
+	$p_{\X_{n_k}|\X_{n_{k-1}},\X_{n_{k-2}},...,\X_{n_1}}(x_{n_k}|x_{n_{k-1}},x_{n_{k-2}},...,x_{n_1})$ \\
+	$=p_{\X_{n_k}|\X_{n_{k-1}}}(x_{n_k}|x_{n_{k-1}})$ \\
+	\end{tablebox}
+
+	\begin{tablebox}{@{\extracolsep\fill}l@{}}
+	$f_{\X_{n_k}|\X_{n_{k-1}},\X_{n_{k-2}},...,\X_{n_1}}(x_{n_k}|x_{n_{k-1}},x_{n_{k-2}},...,x_{n_1})$ \\
+	$=f_{\X_{n_k}|\X_{n_{k-1}}}(x_{n_k}|x_{n_{k-1}})$
+	\end{tablebox}
+
+	\subsubsection{Zustandsübergang}
+	\emph{Zustandsübergangswahrscheinlichkeit:} \\
+	\centerline{$p_{\X_{n} | \X_{n-1}}(x_{n} | x_{n-1})$}\\
+
+	\qquad Verbund-WMF: \\
+	$p_{\X_1,...,\X_n}(x_1,...,x_n)=p_{\X_1}(x_1)\prod\limits_{i=2}^{n}p_{\X_i|\X_{i-1}}(x_i|x_{i-1})$ \\
+
+	\emph{Zustandsübergangsdicht:} \\
+	\centerline{$ f_{\X_{n} | \X_{n-1}}(x_{n} | x_{n-1})$}\\
+
+	\qquad Verbund-WDF: \\
+	$f_{\X_1,...,\X_n}(x_1,...,x_n)=f_{\X_1}(x_1)\prod\limits_{i=2}^{n}f_{\X_i|\X_{i-1}}(x_i|x_{i-1})$ \\ \\
+
+
+	Eine Markowkette heißt \emph{homogen}, wenn die Übergangswahrscheinlichkeit\ unabhängig vom Index ist \\
+	$p_{\X_{n+1} | \X_{n}} (x_{n+1} | x_{n}) = p_{\X_{n+1+k} | \X_{n+k}} (x_{n+1} | x_{n})$ \\
+	$f_{\X_{n+1} | \X_{n}} (x_{n+1} | x_{n}) = f_{\X_{n+1+k} | \X_{n+k}} (x_{n+1} | x_{n})$ \\
+
+
+	\subsubsection{Chapman-Kologorow Gleichung}
+	2-Schritt-Übergangswahrscheinlichkeit: \\
+	 $p_{\X_{n+2}|\X_n}(x_{n+2}|x_n)= \\ \sum\limits_{\xi\in\mathbb{X}}p_{\X_{n+2}|\X_{n+1}}(x_{n+2}|\xi)p_{\X_{n+1}|\X_n}(\xi |x_n)$
+
+	m+l-Schritt-Übergangswahrscheinlichkeit: \\
+	$p_{\X_{n+m+l}|\X_n}(x_{n+m+l}|x_n) =$\\
+	\resizebox{\textwidth}{!}{$ \sum\limits_{\xi \in \mathbb{X}}p_{\X_{n+m+l}|\X_{n+m}}(x_{n+m+l}|x_{n+m})p_{\X_{n+m}|\X_{n}}(x_{n+m}|x_{n})$}
+\end{sectionbox}
+\begin{sectionbox}
+	\subsubsection{Markowketten im endlichen Zustandsraum}
+	$\vec{p}_{n} \triangleq \begin{bmatrix} p_{\X_{n}}(x_{1}) \\ p_{\X_{n}}(x_{2}) \\ \vdots \\ p_{\X_{n}}(x_{N}) \end{bmatrix} \quad \in [0,1]^{N}\text{ mit }[\vec{p}_{n}]_{i} = p_{\X_{n}}(x_{i})$ \\
+	\emph{Übergangsmatrix:}
+	 $\Pi = \begin{bmatrix} p_{11} & \cdots & p_{1N} \\ \vdots & \ddots &   \\ p_{N1} & & p_{NN} \end{bmatrix} \quad \in [0,1]^{N \times N}$\\
+
+	 \emph{Übergangswahrscheinlichkeit:} $p_{ij} = p_{\X_{n+1}|\X_n}(\xi_i|\xi_j)$ \\
+	 \centerline{Spaltensumme muss immer 1 ergeben!}\\
+	 \begin{tablebox}{l}
+		 $\vec{p}_{n+1}  = \Pi \vec{p}_{n} \quad n \in \N$ \\
+		 $\vec{p}_{n+m}  = \Pi^{m} \vec{p}_{n} \quad n, m \in \N$
+	 \end{tablebox}
+	 Eine Verteilung heißt \emph{stationär}, wenn gilt:\\
+	\[\vec{p}_{\infty}  = \Pi \vec{p}_{\infty} \]
+\end{sectionbox}
+
 
 \end{document}
